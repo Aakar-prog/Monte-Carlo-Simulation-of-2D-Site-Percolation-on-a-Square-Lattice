@@ -70,3 +70,38 @@ def test_single_closed_site():
     lattice = np.array([[0]])
 
     assert not percolates(lattice)
+
+
+def test_vertical_percolation():
+
+    lattice = np.array([
+        [1,0,0],
+        [1,0,0],
+        [1,0,0]
+    ])
+
+    # A continuous vertical path should percolate
+    assert percolates(lattice)
+
+
+def test_blocked_lattice():
+
+    lattice = np.array([
+        [1,0,1],
+        [0,0,0],
+        [1,0,1]
+    ])
+
+    # No connected path from top to bottom
+    assert not percolates(lattice)
+
+
+def test_diagonal_not_connected():
+
+    lattice = np.array([
+        [1,0],
+        [0,1]
+    ])
+
+    # Diagonal connections should NOT count
+    assert not percolates(lattice)
