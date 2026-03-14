@@ -17,21 +17,27 @@ The simulation estimates this threshold numerically and compares the results wit
 ## Project Structure
 
 percolation/
-    lattice.py — random lattice generation
-    cluster.py — BFS percolation detection
-    simulation.py — Monte Carlo simulation
-    visualization.py — plotting utilities
+│
+├── lattice.py          # random lattice generation
+├── cluster.py          # BFS percolation detection
+├── simulation.py       # Monte Carlo simulation
+├── visualization.py    # plotting utilities
+└── __init__.py
 
 tests/
-    test_lattice.py
-    test_cluster.py
-    test_simulation.py
+├── test_lattice.py
+├── test_cluster.py
+└── test_simulation.py
 
-main.py
+images/                 # figures used in README
+
+main.py                 # runs the simulation
 requirements.txt
 README.md
+LICENSE
 
 ---
+
 
 ## Method
 
@@ -62,7 +68,7 @@ The probability of percolation increases sharply near the critical threshold.
 ### Finite-Size Comparison
 
 (Plot showing results for multiple lattice sizes)
-![Finite Size Comparison](images/finite_size_comparison.png)
+![Finite Size Comparison](images/FFinal_percolation.png)
 
 As lattice size increases, the transition becomes sharper and the estimated threshold approaches the theoretical value.
 
@@ -70,7 +76,7 @@ As lattice size increases, the transition becomes sharper and the estimated thre
 
 # Lattice Structure
 
-![Lattice Structure](images/ FFinal_lattice.png)
+![Lattice Structure](images/FFinal_lattice.png)
 
 ---
 
