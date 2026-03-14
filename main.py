@@ -7,22 +7,25 @@ from percolation.simulation import sweep_probabilities, estimate_threshold
 
 def main():
 
-    # Lattice size and number of Monte Carlo trials
-    size = 30
+    sizes = [20, 40, 60]
     trials = 100
+    p_c_theory = 0.5927
 
-    # Range of occupation probabilities
     p_values = np.linspace(0.3, 0.8, 20)
 
-    probabilities = sweep_probabilities(size, p_values, trials)
+    for size in sizes:
 
-    # Estimate critical threshold
+     probabilities = sweep_probabilities(size, p_values, trials)
+
     p_c_est = estimate_threshold(p_values, probabilities)
 
-    print(f"Estimated critical threshold p_c ≈ {p_c_est:.3f}")
-    print("Theoretical value ≈ 0.5927")
+    error = abs(p_c_est - p_c_theory)
 
-    # Plot percolation transition
+    print(f"\nLattice size L = {size}")
+    print(f"Estimated p_c ≈ {p_c_est:.3f}")
+    print(f"Theoretical p_c = {p_c_theory}")
+    print(f"Error = {error:.4f}")
+
     plot_percolation_curve(p_values, probabilities, p_c_est)
 
     # Visualize one lattice configuration
