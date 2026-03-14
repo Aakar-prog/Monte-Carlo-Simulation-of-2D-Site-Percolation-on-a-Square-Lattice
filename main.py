@@ -1,14 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+np.random.seed(42) # Set random seed for preproducibility
+
 from percolation.lattice import generate_lattice
 from percolation.simulation import sweep_probabilities, estimate_threshold
 from percolation.visualization import plot_lattice
 
 
-def main():
+def main():              
 
-    sizes = [20, 40, 60]
+    sizes = [20, 40, 60]   # Different lattice sizes used to study finite-size effects
+                           #sizes = [20, 40, 60]
     trials = 100
     p_c_theory = 0.5927
 
