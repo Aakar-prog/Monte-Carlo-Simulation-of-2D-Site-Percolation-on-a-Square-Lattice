@@ -49,3 +49,13 @@ def sweep_probabilities(size, p_values, trials=100):
         results.append(prob)
 
     return np.array(results)
+
+
+def estimate_threshold(p_values, probabilities):
+    """
+    Estimate the critical percolation threshold p_c.
+    We approximate it as the p where percolation probability is closest to 0.5.
+    """
+
+    idx = np.argmin(np.abs(probabilities - 0.5))
+    return p_values[idx]

@@ -105,3 +105,13 @@ def test_diagonal_not_connected():
 
     # Diagonal connections should NOT count
     assert not percolates(lattice)
+
+def test_diagonal_not_connected():
+
+    lattice = np.array([
+        [1,0],
+        [0,1]
+    ])
+
+    # Diagonal sites are not connected in square lattice percolation
+    assert not percolates(lattice)
