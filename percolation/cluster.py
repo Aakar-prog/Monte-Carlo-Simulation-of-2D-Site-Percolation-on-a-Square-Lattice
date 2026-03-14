@@ -26,6 +26,11 @@ def percolates(lattice):
     visited = set()
     queue = deque()
 
+    # Breadth-First Search (BFS) is used to explore connected open sites.
+    # The search starts from all open sites in the top row and propagates
+    # through neighboring open sites. If the search reaches the bottom row,
+    # a spanning cluster exists and the system percolates.
+
     # Start BFS (Breadth First Search) from open sites in the top row
     for j in range(size):
         if lattice[0, j] == 1:
