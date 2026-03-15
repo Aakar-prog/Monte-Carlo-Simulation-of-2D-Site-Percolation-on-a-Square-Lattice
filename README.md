@@ -16,27 +16,35 @@ The simulation estimates this threshold numerically and compares the results wit
 
 ## Project Structure
 
-percolation/
+```text
+Monte-Carlo-Simulation-of-2D-Site-Percolation-on-a-Square-Lattice/
+
 │
-├── lattice.py          # random lattice generation
-├── cluster.py          # BFS percolation detection
-├── simulation.py       # Monte Carlo simulation
-├── visualization.py    # plotting utilities
-└── __init__.py
-
-tests/
-├── test_lattice.py
-├── test_cluster.py
-└── test_simulation.py
-
-images/                 # figures used in README
-
-main.py                 # runs the simulation
-requirements.txt
-README.md
-LICENSE
+├── percolation/
+│   ├── lattice.py          # random lattice generation
+│   ├── cluster.py          # BFS percolation detection
+│   ├── simulation.py       # Monte Carlo simulation
+│   ├── visualization.py    # plotting utilities
+│   └── __init__.py
+│
+├── tests/
+│   ├── test_lattice.py     # tests for lattice generation
+│   ├── test_cluster.py     # tests for BFS percolation detection
+│   ├── test_simulation.py  # tests for Monte Carlo simulation
+│   └── __init__.py
+│
+├── images/                 # figures used in README
+│
+├── main.py                 # runs the full simulation
+├── requirements.txt        # project dependencies
+├── README.md               # project documentation
+├── LICENSE
+├── .gitignore
+└── .gitattributes
+```
 
 ---
+
 
 
 ## Method
