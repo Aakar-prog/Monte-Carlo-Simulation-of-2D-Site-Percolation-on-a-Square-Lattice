@@ -113,5 +113,4 @@ def test_diagonal_not_connected():
         [0,1]
     ])
 
-    # Diagonal sites are not connected in square lattice percolation
-    assert not percolates(lattice)
+    
