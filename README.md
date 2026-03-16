@@ -1,16 +1,32 @@
-# Monte Carlo Simulation of 2D Site Percolation on a Square Lattice
+# Monte_Carlo_Simulation_of_2D_Site_Percolation_on_a_Square_Lattice
+
+---
+
+# Introduction
 
 ## Overview
 
-This project implements a **Monte Carlo simulation of site percolation on a 2D square lattice**. The goal is to study how connected clusters emerge as the site occupation probability increases and to estimate the **critical percolation threshold**.
+This project implements a **Monte Carlo simulation of site percolation on a two-dimensional square lattice**.
 
-In site percolation, each lattice site is occupied with probability (p). As (p) increases, clusters grow until a spanning cluster connects the **top and bottom boundaries** of the lattice.
+In percolation theory, we study how **connectivity emerges in a random system**. In this model, each site of a square grid (lattice) is occupied with probability **p** and empty otherwise.
 
-For a square lattice, the theoretical threshold is:
+As the probability **p** increases, occupied sites begin forming connected clusters. When a cluster connects the **top and bottom boundaries of the lattice**, the system is said to **percolate**.
+
+At small values of p, clusters remain small and disconnected. As p increases, clusters grow until a critical point is reached where a spanning cluster appears across the system. This critical probability is known as the **percolation threshold**.
+
+For a two-dimensional square lattice, the theoretical threshold is approximately
 
 p_c ≈ 0.5927
 
-The simulation estimates this threshold numerically and compares the results with the theoretical prediction.
+This project estimates the threshold numerically using **Monte Carlo simulations**. Random lattices are generated repeatedly and a **breadth-first search (BFS)** algorithm is used to detect whether a spanning cluster exists.
+
+The simulation also investigates:
+
+- how the probability of percolation changes with p  
+- how lattice size affects the transition (finite-size effects)  
+- statistical fluctuations from repeated simulations
+
+The results are visualized through plots of percolation probability versus occupation probability.
 
 ---
 
@@ -82,6 +98,15 @@ As lattice size increases, the transition becomes sharper and the estimated thre
 
 ---
 
+### Monte Carlo Statistical Uncertainty
+
+![Error bars](images/error_bars.png)
+
+Monte Carlo estimates with statistical error bars showing sampling uncertainty for each probability value.
+
+---
+
+
 # Lattice Structure
 
 ![Lattice Structure](images/FFinal_lattice.png)
@@ -93,10 +118,11 @@ As lattice size increases, the transition becomes sharper and the estimated thre
 
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
-
 Run the simulation:
 
+```bash
 python main.py
 
 This will perform the Monte Carlo simulation and generate the percolation plots.
@@ -115,17 +141,22 @@ The tests cover:
 
 These tests help ensure that the algorithms behave correctly and that edge cases (such as empty or fully occupied lattices) are handled properly.
 
+
 Run all tests with:
 
+```bash
 pytest
+```
 
 ---
 
 ## Dependencies
 
+```text
 numpy
 matplotlib
 pytest
+```
 
 ---
 
@@ -133,12 +164,16 @@ pytest
 
 A fixed random seed is used to ensure reproducibility of the simulation:
 
+```python
 np.random.seed(42)
+```
+
+
 
 ---
 
 ## Summary
 
-This project demonstrates how **Monte Carlo methods and graph traversal algorithms** can be used to study phase transitions in percolation systems. The simulation reproduces the expected behaviour and provides an estimate of the critical threshold close to the theoretical value.
+This project demonstrates how **Monte Carlo methods and graph traversal algorithms** can be used to study phase transitions in percolation systems. The simulation reproduces the expected behaviour and provides an estimate of the critical threshold close to the theoretical value.The simulation also estimates statistical uncertainty using binomial error estimates. Additionally, the derivative of the percolation probability curve is used to identify the sharp transition region near the critical threshold.
 
 
