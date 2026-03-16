@@ -1,4 +1,4 @@
-# Monte_Carlo_Simulation_of_2D_Site_Percolation_on_a_Square_Lattice
+# Monte Carlo Simulation of 2D Site Percolation on a Square Lattice
 
 ---
 
