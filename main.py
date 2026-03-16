@@ -23,6 +23,13 @@ def main():
 
         probabilities = sweep_probabilities(size, p_values, trials)
 
+        # Monte Carlo statistical uncertainty
+        errors = np.sqrt(probabilities * (1 - probabilities) / trials)
+
+        # derivative of percolation curve
+        derivative = np.gradient(probabilities, p_values)
+        p_peak = p_values[np.argmax(derivative)]
+
         p_c_est = estimate_threshold(p_values, probabilities)
 
         error = abs(p_c_est - p_c_theory)
@@ -31,8 +38,9 @@ def main():
         print(f"Estimated p_c ≈ {p_c_est:.3f}")
         print(f"Theoretical p_c = {p_c_theory}")
         print(f"Error = {error:.4f}")
+        print(f"Transition peak (max slope) near p ≈ {p_peak:.3f}")
 
-        plt.plot(p_values, probabilities, marker="o", label=f"L = {size}")
+        plt.errorbar(p_values, probabilities, yerr=errors, marker="o", capsize=3, label=f"L = {size}")
 
     # theoretical threshold
     plt.axvline(p_c_theory, color="red", linestyle="--", label="Theory $p_c$")

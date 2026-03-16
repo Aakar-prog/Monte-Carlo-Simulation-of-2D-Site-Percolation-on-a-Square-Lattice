@@ -59,3 +59,9 @@ def estimate_threshold(p_values, probabilities):
 
     idx = np.argmin(np.abs(probabilities - 0.5))
     return p_values[idx]
+
+def compute_uncertainty(probabilities, trials):
+    """
+    Estimate statistical uncertainty of Monte Carlo probabilities.
+    """
+    return np.sqrt(probabilities * (1 - probabilities) / trials)
