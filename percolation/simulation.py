@@ -4,30 +4,40 @@ from percolation.lattice import generate_lattice
 from percolation.cluster import percolates
 
 
-def run_simulation(size: int, p: float, trials: int = 100):
+def run_simulation(size: int, p: float, trials: int = 100, seed=None):
     """
-    Run multiple percolation experiments for a given probability p.
+    Run multiple Monte Carlo experiments to estimate the percolation probability
+    for a given lattice size and occupation probability.
+
+    Each trial generates a random lattice and checks whether a spanning cluster
+    connects the top and bottom boundaries.
 
     Parameters
     ----------
     size : int
-        Lattice dimension
+        Linear dimension of the square lattice (L x L).
+
     p : float
-        Site occupation probability
+        Site occupation probability (0 ≤ p ≤ 1).
+
     trials : int
-        Number of Monte Carlo simulations
+        Number of independent Monte Carlo simulations.
+
+    seed : int, optional
+        Base random seed used for reproducibility. Each trial uses a shifted
+        seed to ensure independent random configurations.
 
     Returns
     -------
     float
-        Estimated percolation probability
+        Estimated probability that the lattice percolates.
     """
 
     count = 0
 
-    for _ in range(trials):
-
-        lattice = generate_lattice(size, p)
+    for t in range(trials):
+        trial_seed = None if seed is None else seed + t
+        lattice = generate_lattice(size, p, seed=trial_seed)
 
         if percolates(lattice):
             count += 1
@@ -35,7 +45,9 @@ def run_simulation(size: int, p: float, trials: int = 100):
     return count / trials
 
 
-def sweep_probabilities(size, p_values, trials=100):
+
+
+def sweep_probabilities(size, p_values, trials, seed=None):
     """
     Compute percolation probability for multiple p values.
     """
@@ -44,7 +56,7 @@ def sweep_probabilities(size, p_values, trials=100):
 
     for p in p_values:
 
-        prob = run_simulation(size, p, trials)
+        prob = run_simulation(size, p, trials, seed)
 
         results.append(prob)
 

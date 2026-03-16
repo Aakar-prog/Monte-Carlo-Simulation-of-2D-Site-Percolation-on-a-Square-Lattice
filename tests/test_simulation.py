@@ -81,11 +81,9 @@ def test_reproducibility():
     The simulation should produce identical results when the same random seed is used.
     """
 
-    np.random.seed(42)
     p_vals = np.linspace(0.4, 0.7, 5)
-    results1 = sweep_probabilities(10, p_vals, trials=10)
 
-    np.random.seed(42)
-    results2 = sweep_probabilities(10, p_vals, trials=10)
+    results1 = sweep_probabilities(10, p_vals, trials=10, seed=42)
+    results2 = sweep_probabilities(10, p_vals, trials=10, seed=42)
 
     assert np.allclose(results1, results2)
