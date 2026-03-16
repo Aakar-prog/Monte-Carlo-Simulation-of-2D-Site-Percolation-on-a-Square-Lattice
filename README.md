@@ -120,10 +120,13 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
 Run the simulation:
 
 ```bash
 python main.py
+```
 
 This will perform the Monte Carlo simulation and generate the percolation plots.
 
@@ -135,12 +138,11 @@ The project includes unit tests implemented using **pytest** to verify the corre
 
 The tests cover:
 
-* **Lattice generation** — verifies that lattices are created correctly for different occupation probabilities.
-* **Cluster detection** — ensures that the BFS algorithm correctly identifies percolating and non-percolating configurations.
-* **Simulation behavior** — checks that the Monte Carlo simulation returns valid probability outputs.
+- **Lattice generation** — verifies that lattices are created correctly for different occupation probabilities.  
+- **Cluster detection** — ensures that the BFS algorithm correctly identifies percolating and non-percolating configurations.  
+- **Simulation behavior** — checks that the Monte Carlo simulation returns valid probability outputs.
 
 These tests help ensure that the algorithms behave correctly and that edge cases (such as empty or fully occupied lattices) are handled properly.
-
 
 Run all tests with:
 
