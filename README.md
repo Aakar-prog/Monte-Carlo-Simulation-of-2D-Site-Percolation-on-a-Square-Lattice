@@ -67,13 +67,14 @@ Monte-Carlo-Simulation-of-2D-Site-Percolation-on-a-Square-Lattice/
 
 The simulation works as follows:
 
-1. Generate a random lattice of size (L \times L), where each site is occupied with probability (p).
-2. Use a **Breadth-First Search (BFS)** algorithm to detect whether a connected cluster spans from the top row to the bottom row.
+1. Generate a random lattice of size (L × L), where each site is either open or closed. 
+   A site is open with probability (p).
+2. Use a Breadth-First Search (BFS) algorithm to detect whether a connected cluster spans from the top row to the bottom row.
 3. Repeat the experiment for many Monte Carlo trials.
 4. Compute the probability that the lattice percolates for each value of (p).
 5. Estimate the critical threshold (p_c).
 
-Simulations are performed for multiple lattice sizes to study **finite-size effects**.
+Simulations are performed for multiple lattice sizes to study finite-size effects.
 
 ---
 
