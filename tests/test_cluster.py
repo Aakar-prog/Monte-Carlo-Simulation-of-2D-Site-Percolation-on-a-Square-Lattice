@@ -199,6 +199,44 @@ def test_neighbors_edge():
 
     assert sorted(result) == sorted(expected)
 
+def test_horizontal_path_not_percolating():
+    """
+    Ensure horizontal connectivity alone does not satisfy
+    the percolation condition.
+
+    In this model, percolation requires a spanning cluster
+    connecting the top boundary to the bottom boundary.
+    A left-to-right path should not be classified
+    as a valid percolating structure.
+    """
+
+    lattice = np.array([
+        [0, 0, 0],
+        [1, 1, 1],
+        [0, 0, 0]
+    ])
+
+    assert not percolates(lattice)
+
+
+def test_multiple_top_start_points():
+    """
+    Verify that the BFS algorithm correctly explores
+    multiple occupied sites on the top boundary.
+
+    Percolation should still be detected when only one
+    of several possible starting points leads to a valid
+    top-to-bottom spanning path.
+    """
+
+    lattice = np.array([
+        [1, 0, 1],
+        [0, 0, 1],
+        [0, 0, 1]
+    ])
+
+    assert percolates(lattice)
+
 
 
 
