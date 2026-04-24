@@ -1,26 +1,38 @@
 import numpy as np
+"""
+Generate a random 2D square lattice for site percolation simulations.
 
+Each lattice site is independently assigned one of two states:
+    1 -> open (occupied) site
+    0 -> closed (unoccupied) site
+
+The probability of a site being open is controlled by the
+occupation probability p, which governs cluster formation
+and the emergence of percolation near the critical threshold.
+
+Parameters
+----------
+size : int
+    Linear dimension of the square lattice (L x L).
+
+p : float
+    Probability that an individual site is open,
+    where 0 ≤ p ≤ 1.
+
+seed : int, optional
+    Random seed used to ensure reproducibility
+    of Monte Carlo simulations.
+
+Returns
+-------
+numpy.ndarray
+    Binary L x L lattice where:
+    1 = open site
+    0 = closed site
+"""
 
 def generate_lattice(size: int, p: float, seed=None) -> np.ndarray:
-    """
-    Generate an LxL lattice where each site is open with probability p.
-
-    Parameters
-    ----------
-    size : int
-        Size of the lattice.
-    p : float
-        Probability that a site is open (0 ≤ p ≤ 1).
-    seed : int, optional
-        Random seed for reproducibility.
-
-    Returns
-    -------
-    numpy.ndarray
-        2D array with
-        1 = open site
-        0 = closed site
-    """
+  
 
     if not isinstance(size, int):
         raise TypeError("size must be an integer")
